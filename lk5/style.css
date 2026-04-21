@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #eef2f7;
+    color: #333;
+}
+
+/* NAVBAR */
+.navbar {
+    background: #5a67d8;
+    color: white;
+    padding: 15px;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 30px;
+    background: white;
+}
+
+.hero img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #a3bffa;
+}
+
+/* MAIN */
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+h2 {
+    margin-bottom: 10px;
+    color: #5a67d8;
+}
+
+/* CARD */
+.skill-container,
+.project-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+article {
+    background: #f7fafc;
+    padding: 15px;
+    border-radius: 10px;
+    flex: 1;
+    min-width: 200px;
+}
+
+/* FORM */
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 6px;
+    border: 1px solid #cbd5e0;
+}
+
+textarea {
+    resize: none;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #5a67d8;
+}
+
+/* BUTTON */
+button {
+    margin-top: 10px;
+    padding: 10px;
+    background: #5a67d8;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #434190;
+}
+
+/* LIST DATA */
+#listData {
+    margin-top: 15px;
+    list-style: none;
+}
+
+#listData li {
+    background: #f7fafc;
+    margin-bottom: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #2d3748;
+    color: white;
+}

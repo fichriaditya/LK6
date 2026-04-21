@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page Data Diri</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        header, nav, main, footer {
+            padding: 15px;
+            margin: 10px;
+            background-color: white;
+            border-radius: 8px;
+        }
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: blue;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input, select, textarea, button {
+            margin: 8px 0;
+            padding: 8px;
+        }
+        button {
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Website Data Diri</h1>
+        <p>Selamat datang di halaman profil sederhana</p>
+    </header>
+
+    <!-- NAVIGASI -->
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Profil</a>
+        <a href="#">Kontak</a>
+    </nav>
+
+    <!-- KONTEN UTAMA -->
+    <main>
+
+        <!-- SECTION PROFIL -->
+        <section>
+            <h2>Profil Saya</h2>
+
+            <!-- ARTICLE -->
+            <article>
+                <p>Ini adalah halaman landing page sederhana yang berisi data diri dan form pendaftaran.</p>
+            </article>
+        </section>
+
+        <!-- SECTION FORM -->
+        <section>
+            <h2>Form Pendaftaran</h2>
+
+            <!-- FORM DATA DIRI -->
+            <form>
+                
+                <!-- Input Nama -->
+                <label>Nama:</label>
+                <input type="text" name="nama" required placeholder="Masukkan nama">
+
+                <!-- Input Email -->
+                <label>Email:</label>
+                <input type="email" name="email" required placeholder="Masukkan email">
+
+                <!-- Input Nomor HP -->
+                <label>Nomor HP:</label>
+                <input type="tel" name="hp" required placeholder="Masukkan nomor HP">
+
+                <!-- Pilihan Kategori -->
+                <label>Kategori:</label>
+                <select name="kategori" required>
+                    <option value="">-- Pilih Kategori --</option>
+                    <option value="pelajar">Pelajar</option>
+                    <option value="mahasiswa">Mahasiswa</option>
+                    <option value="umum">Umum</option>
+                </select>
+
+                <!-- Textarea Pesan -->
+                <label>Pesan:</label>
+                <textarea name="pesan" rows="4" required placeholder="Tulis pesan..."></textarea>
+
+                <!-- Tombol Submit -->
+                <button type="submit">Kirim</button>
+
+            </form>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Data Diri | Dibuat oleh Anda</p>
+    </footer>
+
+</body>
+</html>

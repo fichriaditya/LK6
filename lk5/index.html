@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Fichri</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2f7;
+            color: #333;
+        }
+
+        .navbar {
+            background: #5a67d8;
+            color: white;
+            padding: 15px;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 30px;
+            background: white;
+        }
+
+        .hero img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #a3bffa;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            color: #5a67d8;
+        }
+
+        .skill-container,
+        .project-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        article {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 10px;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 6px;
+            border: 1px solid #cbd5e0;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            background: #5a67d8;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #434190;
+        }
+
+        #listData {
+            margin-top: 15px;
+            list-style: none;
+        }
+
+        #listData li {
+            background: #f7fafc;
+            margin-bottom: 10px;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #2d3748;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="nav-container">
+        <h1>Fichri Aditya Nugraha</h1>
+        <ul class="nav-menu">
+            <li><a href="#tentang">Tentang</a></li>
+            <li><a href="#skill">Keahlian</a></li>
+            <li><a href="#proyek">Proyek</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+            <li><a href="#form">Form</a></li>
+        </ul>
+    </div>
+</header>
+
+<section class="hero">
+    <img src="png.jpeg" alt="Foto Profil">
+    <p>Mahasiswa ITSK Dr. Soepraoen Malang</p>
+</section>
+
+<main>
+
+<section id="tentang">
+    <h2>Tentang Saya</h2>
+    <p>Saya mahasiswa dari Malang yang sedang belajar web development.</p>
+</section>
+
+<section id="skill">
+    <h2>Keahlian</h2>
+    <div class="skill-container">
+        <article>
+            <h3>Web Dasar</h3>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+            </ul>
+        </article>
+    </div>
+</section>
+
+<section id="proyek">
+    <h2>Proyek</h2>
+    <div class="project-container">
+        <article>
+            <h3>Website Data Diri</h3>
+            <p>Project HTML sederhana</p>
+        </article>
+    </div>
+</section>
+
+<section id="kontak">
+    <h2>Kontak</h2>
+    <p>Kota: Malang</p>
+    <p>Kampus: ITSK Dr. Soepraoen Malang</p>
+</section>
+
+<section id="form">
+    <h2>Form Kontak</h2>
+
+    <form id="myForm">
+        <input type="text" id="nama" placeholder="Nama">
+        <small id="errorNama" style="color:red;"></small>
+
+        <input type="email" id="email" placeholder="Email">
+        <small id="errorEmail" style="color:red;"></small>
+
+        <select id="kategori">
+            <option value="">Pilih Kategori</option>
+            <option>Pelajar</option>
+            <option>Mahasiswa</option>
+            <option>Karyawan</option>
+        </select>
+        <small id="errorKategori" style="color:red;"></small>
+
+        <input type="text" id="hp" placeholder="Nomor HP">
+        <small id="errorHP" style="color:red;"></small>
+
+        <textarea id="pesan" rows="4" placeholder="Pesan"></textarea>
+        <small id="errorPesan" style="color:red;"></small>
+
+        <button type="submit">Kirim</button>
+    </form>
+
+    <p id="notif"></p>
+    <ul id="listData"></ul>
+</section>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 Fichri Aditya Nugraha</p>
+</footer>
+
+<script>
+const form = document.getElementById("myForm");
+const nama = document.getElementById("nama");
+const email = document.getElementById("email");
+const kategori = document.getElementById("kategori");
+const hp = document.getElementById("hp");
+const pesan = document.getElementById("pesan");
+const notif = document.getElementById("notif");
+const list = document.getElementById("listData");
+
+const errorNama = document.getElementById("errorNama");
+const errorEmail = document.getElementById("errorEmail");
+const errorKategori = document.getElementById("errorKategori");
+const errorHP = document.getElementById("errorHP");
+const errorPesan = document.getElementById("errorPesan");
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let valid = true;
+
+    if (nama.value.length < 3) {
+        errorNama.innerText = "Minimal 3 huruf";
+        valid = false;
+    } else errorNama.innerText = "";
+
+    if (!email.value.includes("@")) {
+        errorEmail.innerText = "Email tidak valid";
+        valid = false;
+    } else errorEmail.innerText = "";
+
+    if (kategori.value === "") {
+        errorKategori.innerText = "Pilih kategori";
+        valid = false;
+    } else errorKategori.innerText = "";
+
+    if (!/^[0-9]+$/.test(hp.value)) {
+        errorHP.innerText = "Harus angka";
+        valid = false;
+    } else errorHP.innerText = "";
+
+    if (pesan.value.length < 5) {
+        errorPesan.innerText = "Pesan terlalu pendek";
+        valid = false;
+    } else errorPesan.innerText = "";
+
+    if (valid) {
+        notif.innerText = "Berhasil dikirim!";
+        notif.style.color = "green";
+
+        alert("Pesan berhasil dikirim! ✅");
+
+        const li = document.createElement("li");
+        li.innerHTML = `
+        Nama: ${nama.value} <br>
+        Email: ${email.value} <br>
+        Kategori: ${kategori.value} <br>
+        No HP: ${hp.value} <br>
+        Pesan: ${pesan.value}
+        `;
+        list.appendChild(li);
+
+        form.reset();
+    } else {
+        notif.innerText = "Gagal kirim!";
+        notif.style.color = "red";
+    }
+});
+</script>
+
+</body>
+</html>
