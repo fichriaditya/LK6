@@ -5,9 +5,10 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: #eef2f7;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Arial, sans-serif;
+    background: linear-gradient(135deg, #B6C7E0 0%, #eef2f7 100%);
     color: #333;
+    min-height: 100vh;
 }
 
 /* NAVBAR */
