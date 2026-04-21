@@ -134,6 +134,27 @@
             padding: 12px;
             border-radius: 8px;
             border: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .data-content {
+            flex: 1;
+        }
+
+        .edit-btn {
+            background: #ecc94b;
+            color: #744210;
+            padding: 8px 12px;
+            font-size: 14px;
+            margin-top: 0;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .edit-btn:hover {
+            background: #d69e2e;
         }
 
         footer {
@@ -229,7 +250,7 @@
         <textarea id="pesan" rows="4" placeholder="Pesan"></textarea>
         <small id="errorPesan" style="color:red;"></small>
 
-        <button type="submit">Kirim</button>
+        <button type="submit" id="submitBtn">Kirim</button>
     </form>
 
     <p id="notif"></p>
@@ -255,6 +276,8 @@ const list = document.getElementById("listData");
 
 const notifBadge = document.getElementById("notifBadge");
 let notifCount = 0;
+const submitBtn = document.getElementById("submitBtn");
+let currentEditLi = null;
 
 const errorNama = document.getElementById("errorNama");
 const errorEmail = document.getElementById("errorEmail");
@@ -299,27 +322,61 @@ form.addEventListener("submit", function(e) {
     } else errorPesan.innerText = "";
 
     if (valid) {
-        notif.innerText = "Berhasil dikirim!";
-        notif.style.color = "green";
+        if (currentEditLi) {
+            currentEditLi.querySelector(".data-nama").innerText = nama.value;
+            currentEditLi.querySelector(".data-email").innerText = email.value;
+            currentEditLi.querySelector(".data-usia").innerText = usia.value;
+            currentEditLi.querySelector(".data-kategori").innerText = kategori.value;
+            currentEditLi.querySelector(".data-hp").innerText = hp.value;
+            currentEditLi.querySelector(".data-pesan").innerText = pesan.value;
+            
+            notif.innerText = "Data berhasil diperbarui!";
+            notif.style.color = "green";
+            alert("Data berhasil diperbarui! ✅");
+            
+            submitBtn.innerText = "Kirim";
+            currentEditLi = null;
+            form.reset();
+        } else {
+            notif.innerText = "Berhasil dikirim!";
+            notif.style.color = "green";
 
-        alert("Pesan berhasil dikirim! ✅");
+            alert("Pesan berhasil dikirim! ✅");
 
-        notifCount++;
-        notifBadge.innerText = notifCount;
-        notifBadge.style.display = "inline-block";
+            notifCount++;
+            notifBadge.innerText = notifCount;
+            notifBadge.style.display = "inline-block";
 
-        const li = document.createElement("li");
-        li.innerHTML = `
-        Nama: ${nama.value} <br>
-        Email: ${email.value} <br>
-        Usia: ${usia.value} Tahun <br>
-        Kategori: ${kategori.value} <br>
-        No HP: ${hp.value} <br>
-        Pesan: ${pesan.value}
-        `;
-        list.appendChild(li);
+            const li = document.createElement("li");
+            li.innerHTML = `
+            <div class="data-content">
+                Nama: <span class="data-nama">${nama.value}</span> <br>
+                Email: <span class="data-email">${email.value}</span> <br>
+                Usia: <span class="data-usia">${usia.value}</span> Tahun <br>
+                Kategori: <span class="data-kategori">${kategori.value}</span> <br>
+                No HP: <span class="data-hp">${hp.value}</span> <br>
+                Pesan: <span class="data-pesan">${pesan.value}</span>
+            </div>
+            <button type="button" class="edit-btn">Edit</button>
+            `;
+            
+            const editBtn = li.querySelector(".edit-btn");
+            editBtn.addEventListener("click", function() {
+                nama.value = li.querySelector(".data-nama").innerText;
+                email.value = li.querySelector(".data-email").innerText;
+                usia.value = li.querySelector(".data-usia").innerText;
+                kategori.value = li.querySelector(".data-kategori").innerText;
+                hp.value = li.querySelector(".data-hp").innerText;
+                pesan.value = li.querySelector(".data-pesan").innerText;
+                
+                submitBtn.innerText = "Simpan Perubahan";
+                currentEditLi = li;
+                window.location.hash = "#form";
+            });
 
-        form.reset();
+            list.appendChild(li);
+            form.reset();
+        }
     } else {
         notif.innerText = "Gagal kirim!";
         notif.style.color = "red";
