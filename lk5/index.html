@@ -40,6 +40,19 @@
         .nav-menu a {
             color: white;
             text-decoration: none;
+            position: relative;
+        }
+
+        .notif-badge {
+            background: #ff4757;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 10px;
+            position: absolute;
+            top: -8px;
+            right: -15px;
+            font-weight: bold;
         }
 
         .hero {
@@ -143,6 +156,7 @@
             <li><a href="#proyek">Proyek</a></li>
             <li><a href="#kontak">Kontak</a></li>
             <li><a href="#form">Form</a></li>
+            <li><a href="#">Notif <span class="notif-badge" id="notifBadge" style="display: none;">0</span></a></li>
         </ul>
     </div>
 </header>
@@ -239,6 +253,9 @@ const pesan = document.getElementById("pesan");
 const notif = document.getElementById("notif");
 const list = document.getElementById("listData");
 
+const notifBadge = document.getElementById("notifBadge");
+let notifCount = 0;
+
 const errorNama = document.getElementById("errorNama");
 const errorEmail = document.getElementById("errorEmail");
 const errorUsia = document.getElementById("errorUsia");
@@ -286,6 +303,10 @@ form.addEventListener("submit", function(e) {
         notif.style.color = "green";
 
         alert("Pesan berhasil dikirim! ✅");
+
+        notifCount++;
+        notifBadge.innerText = notifCount;
+        notifBadge.style.display = "inline-block";
 
         const li = document.createElement("li");
         li.innerHTML = `
