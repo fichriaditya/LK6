@@ -61,30 +61,48 @@ document.addEventListener("DOMContentLoaded", function () {
         } else errorPesan.innerText = "";
 
         if (valid) {
-            notif.innerText = "Berhasil dikirim!";
-            notif.style.color = "green";
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerText;
+            
+            // ⏳ UX Feedback: Mulai Loading
+            submitBtn.innerText = "Mengirim...";
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = "0.7";
+            submitBtn.style.cursor = "not-allowed";
 
-            // 🔥 ALERT (popup tengah)
-            alert("Pesan berhasil dikirim! ✅");
-
-            // 🔥 POPUP MODERN
-            popup.style.display = "block";
-
+            // Simulasi proses pengiriman data dengan setTimeout
             setTimeout(() => {
-                popup.style.display = "none";
-            }, 3000);
+                // Selesai Loading
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = "1";
+                submitBtn.style.cursor = "pointer";
 
-            const li = document.createElement("li");
-            li.innerHTML = `
-                Nama: ${nama.value} <br>
-                Email: ${email.value} <br>
-                Kategori: ${kategori.value} <br>
-                No HP: ${hp.value} <br>
-                Pesan: ${pesan.value}
-            `;
-            list.appendChild(li);
+                notif.innerText = "Berhasil dikirim!";
+                notif.style.color = "green";
 
-            form.reset();
+                // 🔥 ALERT (popup tengah)
+                alert("Pesan berhasil dikirim! ✅");
+
+                // 🔥 POPUP MODERN
+                popup.style.display = "block";
+
+                setTimeout(() => {
+                    popup.style.display = "none";
+                }, 3000);
+
+                const li = document.createElement("li");
+                li.innerHTML = `
+                    Nama: ${nama.value} <br>
+                    Email: ${email.value} <br>
+                    Kategori: ${kategori.value} <br>
+                    No HP: ${hp.value} <br>
+                    Pesan: ${pesan.value}
+                `;
+                list.appendChild(li);
+
+                form.reset();
+            }, 1500); // 1.5 detik durasi loading
 
         } else {
             notif.innerText = "Gagal kirim!";
