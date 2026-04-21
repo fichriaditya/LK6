@@ -198,6 +198,9 @@
         <input type="email" id="email" placeholder="Email">
         <small id="errorEmail" style="color:red;"></small>
 
+        <input type="number" id="usia" placeholder="Usia">
+        <small id="errorUsia" style="color:red;"></small>
+
         <select id="kategori">
             <option value="">Pilih Kategori</option>
             <option>Pelajar</option>
@@ -229,6 +232,7 @@
 const form = document.getElementById("myForm");
 const nama = document.getElementById("nama");
 const email = document.getElementById("email");
+const usia = document.getElementById("usia");
 const kategori = document.getElementById("kategori");
 const hp = document.getElementById("hp");
 const pesan = document.getElementById("pesan");
@@ -237,6 +241,7 @@ const list = document.getElementById("listData");
 
 const errorNama = document.getElementById("errorNama");
 const errorEmail = document.getElementById("errorEmail");
+const errorUsia = document.getElementById("errorUsia");
 const errorKategori = document.getElementById("errorKategori");
 const errorHP = document.getElementById("errorHP");
 const errorPesan = document.getElementById("errorPesan");
@@ -255,6 +260,11 @@ form.addEventListener("submit", function(e) {
         errorEmail.innerText = "Email tidak valid";
         valid = false;
     } else errorEmail.innerText = "";
+
+    if (usia.value === "" || usia.value <= 0) {
+        errorUsia.innerText = "Usia harus lebih dari 0";
+        valid = false;
+    } else errorUsia.innerText = "";
 
     if (kategori.value === "") {
         errorKategori.innerText = "Pilih kategori";
@@ -281,6 +291,7 @@ form.addEventListener("submit", function(e) {
         li.innerHTML = `
         Nama: ${nama.value} <br>
         Email: ${email.value} <br>
+        Usia: ${usia.value} Tahun <br>
         Kategori: ${kategori.value} <br>
         No HP: ${hp.value} <br>
         Pesan: ${pesan.value}
